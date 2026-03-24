@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+env/
+.venv/
+
+# Secrets / Config
+db_config.py
+config.ini
+
+# Data files (keep folder structure, ignorar datos pero no los placeholder)
+data/raw/*.csv
+data/processed/*.csv
+!**/.gitkeep
+
+# Power BI — comentar si quieres versionar el .pbix
+# *.pbix
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
