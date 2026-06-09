@@ -24,9 +24,9 @@ con un **Data Quality Score global de 83.2%** — equivalente a 1 de cada 6 regi
 ```
 PostgreSQL (fuente de datos)
         |
-        +-- sql/01_schema.sql        (DDL: creacion de tablas)
+        +-- sql/01_schema.sql        (DDL: creación de tablas)
         +-- sql/02_seed_data.sql     (datos con errores intencionales)
-        +-- sql/03_data_quality_checks.sql  (9 queries de auditoria)
+        +-- sql/03_data_quality_checks.sql  (9 queries de auditoría)
         |
         v
 Python (psycopg2 + pandas)
@@ -41,7 +41,7 @@ Power BI
         |   (conecta a data/processed/ o directo a PostgreSQL)
         |
         v
-Documentacion
+Documentación
         +-- docs/business_problem.md
         +-- docs/findings.md
         +-- docs/financial_impact.md
@@ -51,15 +51,15 @@ Documentacion
 
 ## Errores de Datos Simulados
 
-| Codigo | Problema | Registros | Impacto Financiero (COP) |
+| Código | Problema | Registros | Impacto Financiero (COP) |
 |--------|----------|-----------|--------------------------|
 | ERROR-1 | Emails duplicados en customers | 6 clientes | — |
-| ERROR-2 | Orders con customer_id inexistente | 3 ordenes | — |
-| ERROR-3 | total_amount != payment_amount | 4 ordenes | 700,000 |
-| ERROR-4 | Pagos sin order_id valido (huerfanos) | 4 pagos | 1,615,000 |
-| ERROR-5 | Orders Completed sin ningun pago | 4 ordenes | 5,250,000 |
-| ERROR-6 | NULL en campos criticos | 6 registros | — |
-| ERROR-7 | Orders para productos inactivos | 3 ordenes | 2,970,000 |
+| ERROR-2 | Orders con customer_id inexistente | 3 órdenes | — |
+| ERROR-3 | total_amount != payment_amount | 4 órdenes | 700,000 |
+| ERROR-4 | Pagos sin order_id válido (huérfanos) | 4 pagos | 1,615,000 |
+| ERROR-5 | Orders Completed sin ningún pago | 4 órdenes | 5,250,000 |
+| ERROR-6 | NULL en campos críticos | 6 registros | — |
+| ERROR-7 | Orders para productos inactivos | 3 órdenes | 2,970,000 |
 
 ---
 
@@ -127,9 +127,9 @@ data-quality-audit-transactional-system/
 │   ├── raw/                 # Datos fuente originales
 │   └── processed/           # CSVs exportados por Python (para Power BI)
 ├── sql/
-│   ├── 01_schema.sql        # DDL: creacion de tablas
+│   ├── 01_schema.sql        # DDL: creación de tablas
 │   ├── 02_seed_data.sql     # Datos con errores intencionales
-│   └── 03_data_quality_checks.sql  # 9 queries de auditoria
+│   └── 03_data_quality_checks.sql  # 9 queries de auditoría
 ├── python/
 │   ├── export_to_csv.py     # Exporta resultados a CSV
 │   └── data_quality_report.py      # Reporte KPIs en consola
@@ -138,7 +138,7 @@ data-quality-audit-transactional-system/
 ├── docs/
 │   ├── business_problem.md  # Contexto y problema de negocio
 │   ├── findings.md          # Hallazgos detallados
-│   └── financial_impact.md  # Analisis de impacto financiero
+│   └── financial_impact.md  # Análisis de impacto financiero
 ├── .env.example             # Plantilla de variables de entorno
 ├── .gitignore
 ├── requirements.txt
@@ -147,7 +147,7 @@ data-quality-audit-transactional-system/
 
 ---
 
-## Setup e Instalacion
+## Setup e Instalación
 
 ### Prerrequisitos
 - PostgreSQL 14+
@@ -169,7 +169,7 @@ createdb retailpro
 psql -d retailpro -f sql/01_schema.sql
 psql -d retailpro -f sql/02_seed_data.sql
 
-# Ejecutar queries de auditoria
+# Ejecutar queries de auditoría
 psql -d retailpro -f sql/03_data_quality_checks.sql
 ```
 
@@ -178,7 +178,7 @@ psql -d retailpro -f sql/03_data_quality_checks.sql
 # Instalar dependencias
 pip install -r requirements.txt
 
-# Copiar plantilla de configuracion
+# Copiar plantilla de configuración
 cp .env.example .env
 # Editar .env con tus credenciales de PostgreSQL
 ```
@@ -217,7 +217,7 @@ py -3 python/export_to_csv.py
 
 ---
 
-## Documentacion Completa
+## Documentación Completa
 
 - [Problema de Negocio](docs/business_problem.md)
 - [Hallazgos Detallados](docs/findings.md)
@@ -229,12 +229,12 @@ py -3 python/export_to_csv.py
 
 - Diseño de esquemas relacionales en **PostgreSQL** con comentarios profesionales
 - Escritura de **queries SQL avanzadas** (CTEs, subqueries correlacionadas, UNION ALL, EXISTS)
-- Automatizacion con **Python** (psycopg2, pandas, dotenv, logging)
-- Cuantificacion de **impacto financiero** de problemas de calidad de datos
-- Pensamiento analitico orientado a **decisiones de negocio**
-- Documentacion tecnica y ejecutiva de nivel profesional
+- Automatización con **Python** (psycopg2, pandas, dotenv, logging)
+- Cuantificación de **impacto financiero** de problemas de calidad de datos
+- Pensamiento analítico orientado a **decisiones de negocio**
+- Documentación técnica y ejecutiva de nivel profesional
 
 ---
 
-> *"No solo detecte errores en los datos — cuantifique el impacto financiero
+> *"No solo detecté errores en los datos — cuantifiqué el impacto financiero
 > y propuse controles preventivos a nivel de base de datos."*
